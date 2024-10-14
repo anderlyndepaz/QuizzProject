@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <title>QUIZZ GAME</title>
+
 </head>
 <body>
-    
+    <section id="formulario">
+    <div class="container" >
+    <div>
+        <h2 class="Formulario">Formulario de Registro</h2>
+        <form class="formulario-registro" id="form">
+            <ul>
+            <li for="nombre">Nombre:</li>
+            <input type="text" id="nombre" name="nombre" placeholder="Introduce nombre..." >
+            <li for="apellido">Apellido:</li>
+            <input type="text" id="apellido" name="apellido" placeholder="Introduce apellido...">
+            <li for="email">Correo Electrónico:</li>
+            <input type="email" id="email" name="email" placeholder="Introduce email..." >
+            <li for="pass2">Contraseña:</li>
+            <input type="password" id="pass" name="pass" placeholder="Introduce contraseña..."><br>
+        </ul>
+            
+        
+        
+            <input type="submit" value="Enviar" id="Enviar">
+            <p class="warnings" id="warnings"></p>
+        </form>
+            </div>
+            
+            <div>
+                <h3>Formulario de Inicio</h3>
+                <form id="form2" action="#" method="POST">
+                    <div>
+                        <label for="email2">Email:</label><br>
+                        <input type="email" id="email2" name="email2" placeholder="Introduce email..."><br>
+                        <label for="pass3">Contraseña:</label><br>
+                        <input type="password" id="pass3" name="pass3" placeholder="Introduce contraseña..."><br>
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+
+            </div>
+            <div>
+                <h3>Logout</h3>
+                <div id="logout">
+                    <p id="message"></p>
+                    <button id="salir">Logout</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+            <script src="./script.js"></script>
 </body>
 </html>
