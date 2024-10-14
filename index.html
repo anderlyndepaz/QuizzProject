@@ -5,6 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" tamaños="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" tamaños="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" tamaños="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" tamaños="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" tamaños="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" tamaños="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" tamaños="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" tamaños="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" tamaños="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" tipo="image/png" tamaños="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" tipo="image/png" tamaños="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icono" tipo="imagen/png" tamaños="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icono" tipo="imagen/png" tamaños="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifiesto" href="./assets/favicon/manifiesto.json">
+    <meta nombre="msapplication-TileColor" contenido="#ffffff">
+    <meta nombre="msapplication-TileImage" contenido="./assets/favicon/ms-icon-144x144.png">
+    <meta nombre="theme-color" contenido="#ffffff">
     <title>Quiz Game</title>
 
     <!-- Favicon -->
@@ -135,8 +152,32 @@
         </section>
 
         <section id="boxResults">
-            <h2>Contenedor de RESULTADOS boxResults</h2>
-            <p>texto y texto</p>
+            <div class="container">
+                <h1>Quiz Finalizado</h1>
+                <div class="question-box">
+                    <img src="./assets/img/cuboQuiz.png" alt="Caja de Pregunta">
+                </div>
+                <div class="leaderboard">
+                    <div class="ranking-item" style="background-color: #FFD700;">
+                        <img src="./assets/img/cuboQuiz.png" alt="Primer Lugar" class="ranking-icon">
+                        <span>10,000 Puntos</span>
+                        <span>nombre</span>
+                    </div>
+                    <div class="ranking-item" style="background-color: #FF69B4;">
+                        <img src="./assets/img/cuboQuiz.png" alt="Segundo Lugar" class="ranking-icon">
+                        <span>10,000 Puntos</span>
+                        <span>nombre</span>
+                    </div>
+                    <div class="ranking-item" style="background-color: #FFD700;">
+                        <img src="./assets/img/cuboQuiz.png" alt="Tercer Lugar" class="ranking-icon">
+                        <span>10,000 Puntos</span>
+                        <span>nombre</span>
+                    </div>
+                </div>
+                <h2>10,000 Puntos</h2>
+                <p>ACERTADAS: 7<br>INCORRECTAS: 3</p>
+                <button id="comenzarBtn">volver a jugar</button>
+            </div>
         </section>
     </main>
 

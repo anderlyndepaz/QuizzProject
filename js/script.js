@@ -41,3 +41,7 @@ form.addEventListener("submit", e => {
     // Aquí puedes proceder con el envío del formulario o ejecutar alguna otra lógica.
   }
 });
+document.getElementById('comenzarBtn').addEventListener('click', function() {
+    alert('¡Nuevo juego comenzado!');
+    // Aquí puedes agregar la lógica para reiniciar el juego o redirigir a la pantalla inicial
+});
