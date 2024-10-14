@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZZ GAME</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quiz Game</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Metadatos importantes -->
+    <meta name="description" content="Quiz 2024 es un emocionante juego de preguntas con 4 posibles respuestas y 3 niveles de dificultad. Pon a prueba tus conocimientos en temas como música, arte, películas, ciencia, historia y literatura.">
+    <meta name="keywords" content="quiz, juego de preguntas, trivia, niveles de dificultad, música, arte, películas, ciencia, historia, literatura, conocimiento">
+    <meta name="author" content="Quiz1410">
+
+    <!-- Enlaces a archivos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-    
-</body>
+    <!-- Encabezado -->
+    <header>
+        <!-- <nav>
+            <ul>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+            </ul>
+        </nav> -->
+    </header>
+
+    <!-- Sección principal -->
+    <main>
+        <section id="boxHome">
+            <h2>Contenedor de INICIO boxHome</h2>
+            <p>Aqui existira el boton de:<br>
+                - Darse de alta<br>
+                - Login<br>
+                - Salir<br>
+                - Modificar Perfil<br>
+                - etc<br>
+            </p>
+
+            <button id="btn_quiz">Comenzar Juego</button>
+
+            <div id="mensaje"></div>
+        </section>
+
+        <section id="boxQuiz">
+            <div class="boxFormulario">
+                <h2>Quiz Game 2024</h2>
+                <form id="form_quiz" action="#">
+                    <label for="quiz_category">Select Category: </label>
+                    <select name="quiz_category">
+                        <option value="any">Random Category</option>
+                        <option value="9">General Knowledge</option>
+                        <option value="10">Entertainment: Books</option>
+                        <option value="11">Entertainment: Film</option>
+                    </select>
+
+                    <br>
+                    <label for="quiz_dificultad">Select Difficulty: </label>
+                    <select name="quiz_dificultad">
+                        <option value="any">Any Difficulty</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <br>
+                    <label for="quiz_time">Select Time: </label>
+                    <select name="quiz_time">
+                        <option value="15">15 seconds</option>
+                        <option value="20">20 seconds</option>
+                        <option value="25">25 seconds</option>
+                        <option value="30">30 seconds</option>
+                    </select>
+                    <br>
+
+                    <button class="" type="submit">Generar Juego</button>
+                </form>
+            </div>
+
+            <div id="boxJuego">
+                <div id="json_datos"></div>
+                <div id="box_cards">
+                    <div class="card"></div>
+                    <button id="btn_nextQuestion"></button>
+                    <button id="btn_mostrarResultados">Mostrar Resultados</button>
+                    <div id="hidden_answer"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="boxResults">
+            <h2>Contenedor de RESULTADOS boxResults</h2>
+            <p>texto y texto</p>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <h2>Contenedor Footer</h2>
+        <p>texto y texto</p>
+    </footer>
+
+    <div id="infoCapa" class="infoCapa">
+        <h3>Valores seleccionados</h3>
+        <div>
+            <strong>Category:</strong> 
+            <label>Any Category</label>
+        </div>
+        
+        <div>
+            <strong>Difficulty:</strong> 
+            <label>Any Difficulty</label>
+        </div>
+        
+        <div>
+            <strong>Time Game:</strong> 
+            <label>15 seconds</label>
+        </div>
+
+        <div>
+            <button id="btn_jugar" class="">JUGAR!</button>
+            <button id="btn_cancelar" class="">Cancelar!</button>
+        </div>
+    </div>
+    <div id="fondoCapa" class="fondoCapa"></div>
+
+    <!-- Scripts de JavaScript -->
+    <script src="js/script.js"></script>
+
+</body> 
+
 </html>
