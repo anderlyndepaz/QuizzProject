@@ -1,0 +1,112 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #00BFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../assets/img/cuadricula.png');
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #000;
+}
+
+.question-box {
+    margin: 20px auto;
+    width: 150px;
+    height: 150px;
+}
+
+.question-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.leaderboard {
+    margin: 20px 0;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #000;
+    width: 450px;
+}
+
+.ranking-icon {
+    width: 50px;
+    height: 50px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #000;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #000;
+}
+
+button {
+    background-color: #FF69B4;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #FF1493;
+}
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    /* Ajusta los botones para que sean más grandes y más fáciles de pulsar en móviles */
+    button {
+        width: 100%;
+        font-size: 18px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    /* Ajustar la imagen y los elementos para que estén alineados verticalmente */
+    .imagen,
+    .resultados {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
