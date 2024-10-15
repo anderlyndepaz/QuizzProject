@@ -5,9 +5,7 @@ mApp.preguntaActual = 0;
 mApp.acertadas = 0;
 mApp.fallidas = 0;
 
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
+
 // Funciones de manejo del DOM
 
 // Funcion corta para llamar a 'document.getElementById'
@@ -61,11 +59,6 @@ function mostrarSeccion(seccion) {
         default:
             console.warn("Sección no válida: " + seccion);
     }
-}
-
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
 // Iniciamos la App
 
 // En el evento onload llamamos a las funciones de inicio
@@ -162,17 +155,20 @@ temas.forEach(tema => {
   const img = document.createElement('img');
   img.src = tema.imagen;
   img.alt = tema.nombre;
-
+  
+// Agregar el contenedor de botones al contenedor principal
+container.appendChild(buttonsContainer);
+  
   const text = document.createElement('p');
   text.textContent = tema.nombre;
 
   button.appendChild(img);
   button.appendChild(text);
   buttonsContainer.appendChild(button);
-});
 
-// Agregar el contenedor de botones al contenedor principal
-container.appendChild(buttonsContainer);
+
+
+
 
 // Agregar todo al DOM
 categorias.appendChild(container);
@@ -248,8 +244,7 @@ function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
 
     // Guardar los datos en localStorage
     guardarEnLocalStorage(puntos, aciertos, fallos, nombre);
-}
-
+  
 // Función para crear un ítem de la tabla de posiciones
 function createRankingItem(color, lugar, puntos, nombre) {
     const rankingItem = document.createElement('div');
@@ -289,7 +284,61 @@ function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
 
     // Guardar el nuevo historial en localStorage
     localStorage.setItem('quizHistorial', JSON.stringify(historial));
-}
 
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
+
+
+function pintarGrafica() {
+  const ctx = document.getElementById('myChart'); // Accede al canvas con ID "myChart"
+
+  // Verifica si el elemento canvas existe
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: {
+        // Etiquetas en formato de fecha
+        labels: [
+          '2024-10-01',
+          '2024-10-02',
+          '2024-10-03',
+          '2024-10-04',
+          '2024-10-05',
+          '2024-10-06'
+        ],
+        datasets: [{
+          label: 'RANKING',
+          data: [12, 19, 3, 5, 2, 3], // Datos de puntuación
+          borderWidth: 5,
+          borderColor: '#ff69b4', // Color del borde de las barras (rosa fuerte)
+          backgroundColor: '#ff69b4', // Color de las barras (rosa fuerte)
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time', // Tipo de eje X: tiempo
+            time: {
+              unit: 'day' // Unidad de tiempo
+            },
+            title: {
+              display: true,
+              text: 'FECHA' // Título del eje X
+            }
+          },
+          y: {
+            beginAtZero: true, // Comenzar el eje Y desde 0
+            title: {
+              display: true,
+              text: 'PUNTUACION' // Título del eje Y
+            }
+          }
+        }
+      }
+    });
+  } else {
+    alert("Canvas not found");
+  }
+}
+
+pintarGrafica();
