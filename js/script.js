@@ -1,4 +1,91 @@
 
+// Variable global
+const mApp = {}
+mApp.arr_preguntas = [];
+mApp.preguntaActual = 0;
+mApp.acertadas = 0;
+mApp.fallidas = 0;
+
+/* ************************************* */
+/* ************************************* */
+/* ************************************* */
+// Funciones de manejo del DOM
+
+// funcion corta para llamar a 'document.getElementById'
+function getById(obj){
+    return document.getElementById(obj);
+}
+
+// funcion corta para llamar a 'document.querySelector'
+function qSelector(obj){
+    return document.querySelector(obj);
+}
+
+/* ************************************* */
+
+// funcion para mostrar u ocultar objetos HTML por ID
+function MO_objID(obj, modo){
+
+    let objHTML = getById(obj);
+
+    if(objHTML){
+        objHTML.style.display = modo;
+    }
+}
+
+// funcion para mostrar u ocultar objetos HTML por querySelector
+function MO_objQS(obj, modo){
+
+    let objHTML = qSelector(obj);
+
+    if(objHTML){
+        objHTML.style.display = modo;
+    }
+}
+
+/* ************************************* */
+
+// funcion para controlar la visibilidad
+// de las tres secciones principales:
+// boxHome, boxQuiz y boxResults
+function mostrarSeccion(seccion) {
+
+    // ocultamos todas las secciones
+    MO_objID("boxHome", 'none');
+    MO_objID("boxQuiz", 'none');
+    MO_objID("boxResults", 'none');
+
+    // mostramos solo la sección pasada como argumento
+    switch(seccion) {
+        case "home":
+            MO_objID("boxHome", 'block');
+            break;
+        case "quiz":
+            MO_objID("boxQuiz", 'block');
+            break;
+        case "results":
+            MO_objID("boxResults", 'block');
+            break;
+        default:
+            console.warn("Sección no válida: " + seccion);
+    }
+}
+
+/* ************************************* */
+/* ************************************* */
+/* ************************************* */
+// Iniciamos la App
+
+// En el evento onload llamamos a las funciones de inicio
+window.addEventListener('load', function() {
+    // mostramos la seccion "home"
+    mostrarSeccion("home");
+});
+
+/* ************************************* */
+/* ************************************* */
+/* ************************************* */
+
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const email = document.getElementById("email");
