@@ -79,7 +79,7 @@ function mostrarSeccion(seccion) {
 // En el evento onload llamamos a las funciones de inicio
 window.addEventListener('load', function () {
   // mostramos la seccion "home"
-  mostrarSeccion("results");
+  mostrarSeccion("home");
 });
 
 /* ************************************* */
