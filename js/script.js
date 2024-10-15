@@ -12,35 +12,35 @@ mApp.fallidas = 0;
 // Funciones de manejo del DOM
 
 // funcion corta para llamar a 'document.getElementById'
-function getById(obj){
-    return document.getElementById(obj);
+function getById(obj) {
+  return document.getElementById(obj);
 }
 
 // funcion corta para llamar a 'document.querySelector'
-function qSelector(obj){
-    return document.querySelector(obj);
+function qSelector(obj) {
+  return document.querySelector(obj);
 }
 
 /* ************************************* */
 
 // funcion para mostrar u ocultar objetos HTML por ID
-function MO_objID(obj, modo){
+function MO_objID(obj, modo) {
 
-    let objHTML = getById(obj);
+  let objHTML = getById(obj);
 
-    if(objHTML){
-        objHTML.style.display = modo;
-    }
+  if (objHTML) {
+    objHTML.style.display = modo;
+  }
 }
 
 // funcion para mostrar u ocultar objetos HTML por querySelector
-function MO_objQS(obj, modo){
+function MO_objQS(obj, modo) {
 
-    let objHTML = qSelector(obj);
+  let objHTML = qSelector(obj);
 
-    if(objHTML){
-        objHTML.style.display = modo;
-    }
+  if (objHTML) {
+    objHTML.style.display = modo;
+  }
 }
 
 /* ************************************* */
@@ -50,25 +50,25 @@ function MO_objQS(obj, modo){
 // boxHome, boxQuiz y boxResults
 function mostrarSeccion(seccion) {
 
-    // ocultamos todas las secciones
-    MO_objID("boxHome", 'none');
-    MO_objID("boxQuiz", 'none');
-    MO_objID("boxResults", 'none');
+  // ocultamos todas las secciones
+  MO_objID("boxHome", 'none');
+  MO_objID("boxQuiz", 'none');
+  MO_objID("boxResults", 'none');
 
-    // mostramos solo la sección pasada como argumento
-    switch(seccion) {
-        case "home":
-            MO_objID("boxHome", 'block');
-            break;
-        case "quiz":
-            MO_objID("boxQuiz", 'block');
-            break;
-        case "results":
-            MO_objID("boxResults", 'block');
-            break;
-        default:
-            console.warn("Sección no válida: " + seccion);
-    }
+  // mostramos solo la sección pasada como argumento
+  switch (seccion) {
+    case "home":
+      MO_objID("boxHome", 'block');
+      break;
+    case "quiz":
+      MO_objID("boxQuiz", 'block');
+      break;
+    case "results":
+      MO_objID("boxResults", 'block');
+      break;
+    default:
+      console.warn("Sección no válida: " + seccion);
+  }
 }
 
 /* ************************************* */
@@ -77,9 +77,9 @@ function mostrarSeccion(seccion) {
 // Iniciamos la App
 
 // En el evento onload llamamos a las funciones de inicio
-window.addEventListener('load', function() {
-    // mostramos la seccion "home"
-    mostrarSeccion("home");
+window.addEventListener('load', function () {
+  // mostramos la seccion "home"
+  mostrarSeccion("results");
 });
 
 /* ************************************* */
@@ -113,7 +113,7 @@ form.addEventListener("submit", e => {
     warnings += 'El apellido no es válido.<br>';
     entrar = true; // Indica que hay errores
   }
-  
+
   // Validar formato de correo electrónico
   if (!regexEmail.test(email.value)) {
     warnings += 'El correo no es válido.<br>';
@@ -131,14 +131,14 @@ form.addEventListener("submit", e => {
 // Función para renderizar el HTML en el DOM dentro de la sección #boxResults
 function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
   // Obtener la sección donde se insertará el contenido
-  const boxResults = document.getElementById('boxResults');
-  if (!boxResults) {
-      console.error('No se encontró el elemento con id "boxResults"');
-      return;
+  const ranking = document.getElementById('ranking');
+  if (!ranking) {
+    console.error('No se encontró el elemento con id "ranking"');
+    return;
   }
-  
+
   // Limpiar el contenido anterior (opcional)
-  boxResults.innerHTML = '';
+  ranking.innerHTML = '';
 
   // Crear el contenedor principal
   const container = document.createElement('div');
@@ -176,6 +176,8 @@ function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
 
   container.appendChild(leaderboard);
 
+
+
   // Puntuación total
   const scoreTitle = document.createElement('h2');
   scoreTitle.textContent = `${puntos} Puntos`;
@@ -191,13 +193,13 @@ function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
   button.id = 'comenzarBtn';
   button.textContent = 'volver a jugar';
   button.addEventListener('click', () => {
-      // Acción para volver a jugar
-      window.location.reload();
+    // Acción para volver a jugar
+    window.location.reload();
   });
   container.appendChild(button);
 
   // Agregar el contenedor a la sección #boxResults
-  boxResults.appendChild(container);
+  ranking.appendChild(container);
 
   // Guardar los datos en localStorage
   guardarEnLocalStorage(puntos, aciertos, fallos, nombre);
@@ -229,11 +231,11 @@ function createRankingItem(color, lugar, puntos, nombre) {
 // Función para guardar en localStorage
 function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
   const quizData = {
-      puntos: puntos,
-      aciertos: aciertos,
-      fallos: fallos,
-      nombre: nombre,
-      fecha: new Date().toLocaleString()
+    puntos: puntos,
+    aciertos: aciertos,
+    fallos: fallos,
+    nombre: nombre,
+    fecha: new Date().toLocaleString()
   };
 
   // Obtener los datos existentes en localStorage o crear uno nuevo
@@ -246,3 +248,58 @@ function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
 
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
+
+
+function pintarGrafica() {
+  const ctx = document.getElementById('myChart'); // Accede al canvas con ID "myChart"
+
+  // Verifica si el elemento canvas existe
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: {
+        // Etiquetas en formato de fecha
+        labels: [
+          '2024-10-01',
+          '2024-10-02',
+          '2024-10-03',
+          '2024-10-04',
+          '2024-10-05',
+          '2024-10-06'
+        ],
+        datasets: [{
+          label: 'RANKING',
+          data: [12, 19, 3, 5, 2, 3], // Datos de puntuación
+          borderWidth: 5,
+          borderColor: '#ff69b4', // Color del borde de las barras (rosa fuerte)
+          backgroundColor: '#ff69b4', // Color de las barras (rosa fuerte)
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time', // Tipo de eje X: tiempo
+            time: {
+              unit: 'day' // Unidad de tiempo
+            },
+            title: {
+              display: true,
+              text: 'FECHA' // Título del eje X
+            }
+          },
+          y: {
+            beginAtZero: true, // Comenzar el eje Y desde 0
+            title: {
+              display: true,
+              text: 'PUNTUACION' // Título del eje Y
+            }
+          }
+        }
+      }
+    });
+  } else {
+    alert("Canvas not found");
+  }
+}
+
+pintarGrafica();
