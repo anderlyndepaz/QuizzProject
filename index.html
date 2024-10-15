@@ -57,6 +57,7 @@
                 <div class="container" >
                 <div>
                     <h2 class="Formulario">Formulario de Registro</h2>
+                   
                     <form class="formulario-registro" id="form">
                         <ul>
                         <li for="nombre">Nombre:</li>
@@ -106,39 +107,8 @@
         </section>
 
         <section id="boxQuiz">
-            <div class="boxFormulario">
-                <h2>Quiz Game 2024</h2>
-                <form id="form_quiz" action="#">
-                    <label for="quiz_category">Select Category: </label>
-                    <select name="quiz_category">
-                        <option value="any">Random Category</option>
-                        <option value="9">General Knowledge</option>
-                        <option value="10">Entertainment: Books</option>
-                        <option value="11">Entertainment: Film</option>
-                    </select>
 
-                    <br>
-                    <label for="quiz_dificultad">Select Difficulty: </label>
-                    <select name="quiz_dificultad">
-                        <option value="any">Any Difficulty</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
-
-                    <br>
-                    <label for="quiz_time">Select Time: </label>
-                    <select name="quiz_time">
-                        <option value="15">15 seconds</option>
-                        <option value="20">20 seconds</option>
-                        <option value="25">25 seconds</option>
-                        <option value="30">30 seconds</option>
-                    </select>
-                    <br>
-
-                    <button class="" type="submit">Generar Juego</button>
-                </form>
-            </div>
+            <div id="categorias"></div>
 
             <div id="boxJuego">
                 <div id="json_datos"></div>
@@ -152,6 +122,7 @@
         </section>
 
         <section id="boxResults">
+            <div id="ranking"></div>
         </section>
     </main>
 
