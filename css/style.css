@@ -110,3 +110,15 @@ button:hover {
         margin: 0 auto;
     }
 }
+
+#grafica {
+    background-color: #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    height: 230px;
+    
+}
