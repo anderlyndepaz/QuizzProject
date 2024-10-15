@@ -150,14 +150,12 @@ function chooseTopic(topic) {
 temas.forEach(tema => {
   const button = document.createElement('div');
   button.classList.add('button');
-  button.onclick = () => chooseTopic(tema.value);
+  button.onclick = () => chooseTopic(tema.value); 
+   }); 
 
   const img = document.createElement('img');
   img.src = tema.imagen;
-  img.alt = tema.nombre;
-  
-// Agregar el contenedor de botones al contenedor principal
-container.appendChild(buttonsContainer);
+  img.alt = tema.nombre;  
   
   const text = document.createElement('p');
   text.textContent = tema.nombre;
@@ -166,7 +164,8 @@ container.appendChild(buttonsContainer);
   button.appendChild(text);
   buttonsContainer.appendChild(button);
 
-
+// Agregar el contenedor de botones al contenedor principal
+container.appendChild(buttonsContainer);
 
 
 
@@ -182,7 +181,7 @@ function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
     if (!ranking) {
         console.error('No se encontró el elemento con id "ranking"');
         return;
-    }
+    } 
     
     // Limpiar el contenido anterior (opcional)
     ranking.innerHTML = '';
@@ -244,6 +243,7 @@ function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
 
     // Guardar los datos en localStorage
     guardarEnLocalStorage(puntos, aciertos, fallos, nombre);
+    }
   
 // Función para crear un ítem de la tabla de posiciones
 function createRankingItem(color, lugar, puntos, nombre) {
@@ -284,7 +284,7 @@ function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
 
     // Guardar el nuevo historial en localStorage
     localStorage.setItem('quizHistorial', JSON.stringify(historial));
-
+ }
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
 
@@ -341,4 +341,4 @@ function pintarGrafica() {
   }
 }
 
-pintarGrafica();
+pintarGrafica();  }
