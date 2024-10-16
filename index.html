@@ -36,6 +36,9 @@
 
     <!-- Enlaces a archivos CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- libreria de grafica -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
 </head>
 
@@ -55,7 +58,8 @@
     <!-- Sección principal -->
     <main>
         <section id="boxHome">
-            <section id="formulario">
+            <div id="formulario">
+
                 <div class="container">
                     <div>
                         <h2 class="Formulario">Formulario de Registro</h2>
@@ -87,7 +91,7 @@
                                 <label for="pass3">Contraseña:</label><br>
                                 <input type="password" id="pass3" name="pass3"
                                     placeholder="Introduce contraseña..."><br>
-                                <input type="submit" value="Enviar">
+                                <input type="submit" value="Enviar">   
                             </div>
                         </form>
 
@@ -101,7 +105,8 @@
 
                     </div>
                 </div>
-            </section>
+              
+            </div>
 
             <button id="btn_quiz">Comenzar Juego</button>
 
@@ -109,6 +114,7 @@
         </section>
 
         <section id="boxQuiz">
+
             <div class="boxFormulario">
                 <h2>Quiz Game 2024</h2>
                 <form id="form_quiz" action="#">
@@ -120,28 +126,13 @@
                         <option value="11">Entertainment: Film</option>
                     </select>
 
-                    <!-- <br>
-                    <label for="quiz_dificultad">Select Difficulty: </label>
-                    <select name="quiz_dificultad">
-                        <option value="any">Any Difficulty</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select> -->
-
-                    <!-- <br>
-                    <label for="quiz_time">Select Time: </label>
-                    <select name="quiz_time">
-                        <option value="15">15 seconds</option>
-                        <option value="20">20 seconds</option>
-                        <option value="25">25 seconds</option>
-                        <option value="30">30 seconds</option>
-                    </select>
-                    <br> -->
 
                     <button class="" type="submit">Generar Juego</button>
                 </form>
             </div>
+
+            <div id="categorias"></div>
+
 
             <!-- <div id="boxJuego">
                 <div id="json_datos"></div>
@@ -158,11 +149,8 @@
                     <div id="box_cards">
 
                         <div class="card">
-                            <!-- <h3><strong>Question 1/10:</strong></h3>
-                            <label><strong>Acertadas: </strong></label>
-                            <label><strong>Fallidas: </strong></label> -->
-
-                            <h3 class="barra-superior">Entertainment: Film</h3>
+                            
+                           <h3 class="barra-superior">Entertainment: Film</h3>
                             <!-- <label><strong>Dificultad:</strong> <span class="difficulty">easy</span></label> -->
 
                             <label class="questionTitle">Who played the female lead in the 1933 film "King
@@ -183,38 +171,13 @@
         </section>
 
         <section id="boxResults">
+            <div id="ranking"></div>
+          <div id="grafica" style="width: 600px;">
+                <canvas id="myChart"></canvas>
+              </div>
+            
         </section>
     </main>
-
-    <!-- Pie de página -->
-    <footer>
-        <h2>Contenedor Footer</h2>
-        <p>texto y texto</p>
-    </footer>
-
-    <div id="infoCapa" class="infoCapa">
-        <h3>Valores seleccionados</h3>
-        <div>
-            <strong>Category:</strong>
-            <label>Any Category</label>
-        </div>
-
-        <div>
-            <strong>Difficulty:</strong>
-            <label>Any Difficulty</label>
-        </div>
-
-        <div>
-            <strong>Time Game:</strong>
-            <label>15 seconds</label>
-        </div>
-
-        <div>
-            <button id="btn_jugar" class="">JUGAR!</button>
-            <button id="btn_cancelar" class="">Cancelar!</button>
-        </div>
-    </div>
-    <div id="fondoCapa" class="fondoCapa"></div>
 
     <!-- Scripts de JavaScript -->
     <script src="js/script.js"></script>
