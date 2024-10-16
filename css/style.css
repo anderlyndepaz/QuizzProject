@@ -197,13 +197,13 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    font-size: 40px;
+    font-size: 20px;
     color: black;
     
 }
 .containerQuestions {
     display: flex;
-    width: 350px;
+    width: 45px;
     margin: auto;
     padding: 50px 50px 50px 50px;
     flex-wrap: wrap;
@@ -211,11 +211,11 @@ button:hover {
 
 }
 
-.containerQuestions {
+/* .containerQuestions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 30px;
-}
+} */
 
 .question {
     padding: 5px;
