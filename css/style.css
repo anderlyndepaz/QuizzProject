@@ -162,6 +162,47 @@ button {
     margin-top: 20px;
 }
 
+#form {
+    background-color: #FF69B4;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#form2 {
+    background-color: #FF69B4;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+input {
+    /* background-color:; */
+    color: black;
+    /* padding: 15px 30px; */
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+#formulario {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+
 button:hover {
     background-color: #FF1493;
 }
@@ -359,7 +400,14 @@ button:hover {
     max-width: 400px;
     margin: 0 auto;
     height: 230px;
+}
 
+ul {
+    list-style-type: none;
+    padding: 0;
+    /* Opcional: para quitar el espacio de relleno por defecto */
+    margin: 0;
+    /* Opcional: para ajustar el margen */
 }
 
 #boxLogout {

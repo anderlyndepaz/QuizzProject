@@ -5,9 +5,7 @@ mApp.preguntaActual = 0;
 mApp.acertadas = 0;
 mApp.fallidas = 0;
 
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
+
 // Funciones de manejo del DOM
 
 // Funcion corta para llamar a 'document.getElementById'
@@ -21,7 +19,6 @@ function qSelector(obj) {
 }
 
 /* ************************************* */
-
 
 // Funcion para mostrar u ocultar objetos HTML por ID
 function MO_objID(obj, modo) {
@@ -41,42 +38,34 @@ function MO_objQS(obj, modo) {
 
 /* ************************************* */
 
-
 // Funcion para controlar la visibilidad de las tres secciones principales: boxHome, boxQuiz y boxResults
 function mostrarSeccion(seccion) {
+	// Ocultamos todas las secciones
+	MO_objID("boxHome", 'none');
+	MO_objID("boxQuiz", 'none');
+	MO_objID("boxResults", 'none');
 
-    // Ocultamos todas las secciones
-    MO_objID("boxHome", 'none');
-    MO_objID("boxQuiz", 'none');
-    MO_objID("boxResults", 'none');
-
-
-    // Mostramos solo la seccion pasada como argumento
-    switch (seccion) {
-        case "home":
-            MO_objID("boxHome", 'block');
-            break;
-        case "quiz":
-            MO_objID("boxQuiz", 'block');
-            break;
-        case "results":
-            MO_objID("boxResults", 'block');
-            break;
-        default:
-            console.warn("Sección no válida: " + seccion);
-    }
+	// Mostramos solo la seccion pasada como argumento
+	switch (seccion) {
+		case "home":
+			MO_objID("boxHome", 'block');
+			break;
+		case "quiz":
+			MO_objID("boxQuiz", 'block');
+			break;
+		case "results":
+			MO_objID("boxResults", 'block');
+			break;
+		default:
+			console.warn("Sección no válida: " + seccion);
+	}
 }
-
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
-
 // Iniciamos la App
 
 // En el evento onload llamamos a las funciones de inicio
 window.addEventListener('load', function () {
-	// mostramos la seccion "home"
-	mostrarSeccion("quiz");
+	// Mostramos la seccion "home"
+	mostrarSeccion("results");
 });
 
 /* ************************************* */
@@ -84,10 +73,10 @@ window.addEventListener('load', function () {
 
 // Validación de formulario
 const nombre = getById("nombre");
+const apellido = getById("apellido");
 const email = getById("email");
 const form = getById("form");
 const parrafo = getById("warnings");
-
 
 form.addEventListener("submit", e => {
 	e.preventDefault(); // Evita que se envíe el formulario automáticamente
@@ -102,6 +91,12 @@ form.addEventListener("submit", e => {
 	// Validar campo "nombre"
 	if (nombre.value.length < 4) {
 		warnings += 'El nombre no es válido.<br>';
+		entrar = true; // Indica que hay errores
+	}
+
+	// Validar campo "apellido"
+	if (apellido.value.length < 5 || apellido.value.length > 30) {
+		warnings += 'El apellido no es válido.<br>';
 		entrar = true; // Indica que hay errores
 	}
 
@@ -288,6 +283,9 @@ function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
 
 	// Guardar el nuevo historial en localStorage
 	localStorage.setItem('quizHistorial', JSON.stringify(historial));
+
+	/* // Ejemplo de uso de la función
+	renderQuizFinalizado(15000, 5, 5, 'Ken'); */
 }
 
 function pintarGrafica() {
@@ -344,4 +342,5 @@ function pintarGrafica() {
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
 pintarGrafica();
+
 
