@@ -28,8 +28,10 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Metadatos importantes -->
-    <meta name="description" content="Quiz 2024 es un emocionante juego de preguntas con 4 posibles respuestas y 3 niveles de dificultad. Pon a prueba tus conocimientos en temas como música, arte, películas, ciencia, historia y literatura.">
-    <meta name="keywords" content="quiz, juego de preguntas, trivia, niveles de dificultad, música, arte, películas, ciencia, historia, literatura, conocimiento">
+    <meta name="description"
+        content="Quiz 2024 es un emocionante juego de preguntas con 4 posibles respuestas y 3 niveles de dificultad. Pon a prueba tus conocimientos en temas como música, arte, películas, ciencia, historia y literatura.">
+    <meta name="keywords"
+        content="quiz, juego de preguntas, trivia, niveles de dificultad, música, arte, películas, ciencia, historia, literatura, conocimiento">
     <meta name="author" content="Quiz1410">
 
     <!-- Enlaces a archivos CSS -->
@@ -56,53 +58,55 @@
     <!-- Sección principal -->
     <main>
         <section id="boxHome">
-            <section id="formulario">
-                <div class="container" >
-                <div>
-                    <h2 class="Formulario">Formulario de Registro</h2>
-                   
-                    <form class="formulario-registro" id="form">
-                        <ul>
-                        <li for="nombre">Nombre:</li>
-                        <input type="text" id="nombre" name="nombre" placeholder="Introduce nombre..." >
-                        <li for="apellido">Apellido:</li>
-                        <input type="text" id="apellido" name="apellido" placeholder="Introduce apellido...">
-                        <li for="email">Correo Electrónico:</li>
-                        <input type="email" id="email" name="email" placeholder="Introduce email..." >
-                        <li for="pass2">Contraseña:</li>
-                        <input type="password" id="pass" name="pass" placeholder="Introduce contraseña..."><br>
-                    </ul>
-                        
-                    
-                    
-                        <input type="submit" value="Enviar" id="Enviar">
-                        <p class="warnings" id="warnings"></p>
-                    </form>
-                        </div>
-                        
-                        <div>
-                            <h3>Formulario de Inicio</h3>
-                            <form id="form2" action="#" method="POST">
-                                <div>
-                                    <label for="email2">Email:</label><br>
-                                    <input type="email" id="email2" name="email2" placeholder="Introduce email..."><br>
-                                    <label for="pass3">Contraseña:</label><br>
-                                    <input type="password" id="pass3" name="pass3" placeholder="Introduce contraseña..."><br>
-                                    <input type="submit" value="Enviar">
-                                </div>
-                            </form>
-            
-                        </div>
-                        <div>
-                            <h3>Logout</h3>
-                            <div id="logout">
-                                <p id="message"></p>
-                                <button id="salir">Logout</button>
-                            </div>
-            
-                        </div>
+            <div id="formulario">
+
+                <div class="container">
+                    <div>
+                        <h2 class="Formulario">Formulario de Registro</h2>
+                        <form class="formulario-registro" id="form">
+                            <ul>
+                                <li for="nombre">Nombre:</li>
+                                <input type="text" id="nombre" name="nombre" placeholder="Introduce nombre...">
+                                <li for="apellido">Apellido:</li>
+                                <input type="text" id="apellido" name="apellido" placeholder="Introduce apellido...">
+                                <li for="email">Correo Electrónico:</li>
+                                <input type="email" id="email" name="email" placeholder="Introduce email...">
+                                <li for="pass2">Contraseña:</li>
+                                <input type="password" id="pass" name="pass" placeholder="Introduce contraseña..."><br>
+                            </ul>
+
+
+
+                            <input type="submit" value="Enviar" id="Enviar">
+                            <p class="warnings" id="warnings"></p>
+                        </form>
                     </div>
-                </section>
+
+                    <div>
+                        <h3>Formulario de Inicio</h3>
+                        <form id="form2" action="#" method="POST">
+                            <div>
+                                <label for="email2">Email:</label><br>
+                                <input type="email" id="email2" name="email2" placeholder="Introduce email..."><br>
+                                <label for="pass3">Contraseña:</label><br>
+                                <input type="password" id="pass3" name="pass3"
+                                    placeholder="Introduce contraseña..."><br>
+                                <input type="submit" value="Enviar">   
+                            </div>
+                        </form>
+
+                    </div>
+                    <div>
+                        <h3>Logout</h3>
+                        <div id="logout">
+                            <p id="message"></p>
+                            <button id="salir">Logout</button>
+                        </div>
+
+                    </div>
+                </div>
+              
+            </div>
 
             <button id="btn_quiz">Comenzar Juego</button>
 
@@ -111,60 +115,74 @@
 
         <section id="boxQuiz">
 
+            <div class="boxFormulario">
+                <h2>Quiz Game 2024</h2>
+                <form id="form_quiz" action="#">
+                    <label for="quiz_category">Select Category: </label>
+                    <select name="quiz_category">
+                        <option value="any">Random Category</option>
+                        <option value="9">General Knowledge</option>
+                        <option value="10">Entertainment: Books</option>
+                        <option value="11">Entertainment: Film</option>
+                    </select>
+
+
+                    <button class="" type="submit">Generar Juego</button>
+                </form>
+            </div>
+
             <div id="categorias"></div>
 
-            <div id="boxJuego">
+
+            <!-- <div id="boxJuego">
                 <div id="json_datos"></div>
                 <div id="box_cards">
+                    
                     <div class="card"></div>
                     <button id="btn_nextQuestion"></button>
                     <button id="btn_mostrarResultados">Mostrar Resultados</button>
                     <div id="hidden_answer"></div>
                 </div>
+            </div> -->
+            <div id="boxJuego">
+                <div id="json_datos">
+                    <div id="box_cards">
+
+                        <div class="card">
+                            
+                           <h3 class="barra-superior">Entertainment: Film</h3>
+                            <!-- <label><strong>Dificultad:</strong> <span class="difficulty">easy</span></label> -->
+
+                            <label class="questionTitle">Who played the female lead in the 1933 film "King
+                                Kong"?</label>
+                            <div class="containerQuestions">
+                                <div class="question neutral" onclick="responderQuiz(event, 0);">Fay Wray</div>
+                                <div class="question neutral azul" onclick="responderQuiz(event, 0);">Jean Harlow</div>
+                                <div class="question neutral rosa" onclick="responderQuiz(event, 0);">Vivien Leigh</div>
+                                <div class="question neutral verde" onclick="responderQuiz(event, 0);">Mae West</div>
+                            </div>
+                        </div><button id="btn_nextQuestion">Siguiente</button>
+                        <!-- <button id="btn_mostrarResultados">Mostrar Resultados</button> -->
+                        <div id="hidden_answer"></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <section id="boxResults">
             <div id="ranking"></div>
-            <div id="grafica" style="width: 600px;">
+          <div id="grafica" style="width: 600px;">
                 <canvas id="myChart"></canvas>
               </div>
+            
         </section>
     </main>
 
-    <!-- Pie de página -->
-    <!-- <footer>
-        <h2>Contenedor Footer</h2>
-        <p>texto y texto</p>
-    </footer>
-
-    <div id="infoCapa" class="infoCapa">
-        <h3>Valores seleccionados</h3>
-        <div>
-            <strong>Category:</strong> 
-            <label>Any Category</label>
-        </div>
-        
-        <div>
-            <strong>Difficulty:</strong> 
-            <label>Any Difficulty</label>
-        </div>
-        
-        <div>
-            <strong>Time Game:</strong> 
-            <label>15 seconds</label>
-        </div>
-
-        <div>
-            <button id="btn_jugar" class="">JUGAR!</button>
-            <button id="btn_cancelar" class="">Cancelar!</button>
-        </div>
-    </div>
-    <div id="fondoCapa" class="fondoCapa"></div> -->
 
     <!-- Scripts de JavaScript -->
     <script src="js/script.js"></script>
 
-</body> 
+</body>
 
 </html>
