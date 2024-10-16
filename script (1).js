@@ -20,7 +20,6 @@ function qSelector(obj) {
 
 /* ************************************* */
 
-
 // Funcion para mostrar u ocultar objetos HTML por ID
 function MO_objID(obj, modo) {
 	let objHTML = getById(obj);
@@ -39,43 +38,34 @@ function MO_objQS(obj, modo) {
 
 /* ************************************* */
 
-
 // Funcion para controlar la visibilidad de las tres secciones principales: boxHome, boxQuiz y boxResults
 function mostrarSeccion(seccion) {
+	// Ocultamos todas las secciones
+	MO_objID("boxHome", 'none');
+	MO_objID("boxQuiz", 'none');
+	MO_objID("boxResults", 'none');
 
-    // Ocultamos todas las secciones
-    MO_objID("boxHome", 'none');
-    MO_objID("boxQuiz", 'none');
-    MO_objID("boxResults", 'none');
-
-
-    // Mostramos solo la seccion pasada como argumento
-    switch (seccion) {
-        case "home":
-            MO_objID("boxHome", 'block');
-            break;
-        case "quiz":
-            MO_objID("boxQuiz", 'block');
-            break;
-        case "results":
-            MO_objID("boxResults", 'block');
-            break;
-        default:
-            console.warn("Sección no válida: " + seccion);
-    }
-
+	// Mostramos solo la seccion pasada como argumento
+	switch (seccion) {
+		case "home":
+			MO_objID("boxHome", 'block');
+			break;
+		case "quiz":
+			MO_objID("boxQuiz", 'block');
+			break;
+		case "results":
+			MO_objID("boxResults", 'block');
+			break;
+		default:
+			console.warn("Sección no válida: " + seccion);
+	}
 }
-
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
-
 // Iniciamos la App
 
 // En el evento onload llamamos a las funciones de inicio
 window.addEventListener('load', function () {
 	// Mostramos la seccion "home"
-	mostrarSeccion("quiz");
+	mostrarSeccion("results");
 });
 
 /* ************************************* */
@@ -87,7 +77,6 @@ const apellido = getById("apellido");
 const email = getById("email");
 const form = getById("form");
 const parrafo = getById("warnings");
-
 
 form.addEventListener("submit", e => {
 	e.preventDefault(); // Evita que se envíe el formulario automáticamente
@@ -353,3 +342,5 @@ function pintarGrafica() {
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
 pintarGrafica();
+
+
