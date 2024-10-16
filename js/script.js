@@ -1,3 +1,15 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyCkRqwzMdrSnXbbatuEZQfFBCJGAfh-2k0",
+    authDomain: "quizz-2024.firebaseapp.com",
+    projectId: "quizz-2024",
+    storageBucket: "quizz-2024.appspot.com",
+    messagingSenderId: "374142806124",
+    appId: "1:374142806124:web:fb045d8b8ea75599d81049"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const formdb = firebase.firestore();
+  
 // Variable global
 const mApp = {};
 mApp.arr_preguntas = [];
