@@ -65,7 +65,7 @@ function mostrarSeccion(seccion) {
 // En el evento onload llamamos a las funciones de inicio
 window.addEventListener('load', function () {
 	// Mostramos la seccion "home"
-	mostrarSeccion("home");
+	mostrarSeccion("results");
 });
 
 /* ************************************* */
@@ -342,3 +342,5 @@ function pintarGrafica() {
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
 pintarGrafica();
+
+
