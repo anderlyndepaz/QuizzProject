@@ -19,11 +19,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f56c9d; /* Color rosa */
+    background-color: #f56c9d;
+    /* Color rosa */
     padding: 10px;
     border-radius: 20px;
     margin: 20px;
 }
+
 /* Contenedor principal */
 .container {
     text-align: center;
@@ -90,6 +92,19 @@ h1 {
     background-color: #FF1493;
 }
 
+.dataForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    width: auto;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
 /* Otros estilos existentes */
 .question-box {
     margin: 20px auto;
@@ -147,6 +162,47 @@ button {
     margin-top: 20px;
 }
 
+#form {
+    background-color: #FF69B4;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#form2 {
+    background-color: #FF69B4;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+input {
+    /* background-color:; */
+    color: black;
+    /* padding: 15px 30px; */
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+#formulario {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+
 button:hover {
     background-color: #FF1493;
 }
@@ -158,8 +214,9 @@ button:hover {
     text-align: center;
     font-size: 40px;
     color: black;
-    
+
 }
+
 .containerQuestions {
     display: flex;
     width: 350px;
@@ -198,21 +255,24 @@ button:hover {
     background-color: rgb(254, 254, 255);
     width: 60px;
     margin: 10px;
-    padding: 50px 50px 50px 50px;   
+    padding: 50px 50px 50px 50px;
     justify-content: center;
     align-items: center;
 }
+
 .question.neutral.azul {
     border: 16px solid rgb(84, 92, 255);
-   
+
 }
+
 .question.neutral.rosa {
     border: 16px solid rgb(255, 84, 249);
-   
+
 }
+
 .question.neutral.verde {
     border: 16px solid rgb(118, 255, 84);
-   
+
 }
 
 .question.neutral:hover {
@@ -273,7 +333,8 @@ button:hover {
 }
 
 #btn_nextQuestion {
-    background-color: #f77eb4; /* Color del botón */
+    background-color: #f77eb4;
+    /* Color del botón */
     color: white;
     padding: 15px 40px;
     border-radius: 30px;
@@ -284,6 +345,7 @@ button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
+
 #btn_nextQuestion:hover {
     opacity: 0.9;
 }
@@ -322,6 +384,7 @@ button:hover {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -329,13 +392,24 @@ button:hover {
 
 #grafica {
     background-color: #ffd700;
-    display: flex;
+    display: none;
+    /* poner a flex para mostrarlo */
     align-items: center;
     justify-content: space-around;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
     height: 230px;
-    
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+    /* Opcional: para quitar el espacio de relleno por defecto */
+    margin: 0;
+    /* Opcional: para ajustar el margen */
+}
+
+#boxLogout {
+    display: none;
+}
