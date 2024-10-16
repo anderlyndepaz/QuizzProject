@@ -64,21 +64,31 @@
                     <div>
                         <h2 class="Formulario">Formulario de Registro</h2>
                         <form class="formulario-registro" id="form">
-                            <ul>
-                                <li for="nombre">Nombre:</li>
+                            <div class="dataForm">
+                                <label for="nombre">Nombre:</label>
                                 <input type="text" id="nombre" name="nombre" placeholder="Introduce nombre...">
-                                <li for="apellido">Apellido:</li>
-                                <input type="text" id="apellido" name="apellido" placeholder="Introduce apellido...">
-                                <li for="email">Correo Electrónico:</li>
+                            </div>
+                            
+                            <div class="dataForm">
+                                <label for="email">Correo Electrónico:</label>
                                 <input type="email" id="email" name="email" placeholder="Introduce email...">
-                                <li for="pass2">Contraseña:</li>
+                            </div>
+                            
+                            <div class="dataForm">
+                                <label for="pass2">Contraseña:</li>
                                 <input type="password" id="pass" name="pass" placeholder="Introduce contraseña..."><br>
-                            </ul>
-
-
-
-                            <input type="submit" value="Enviar" id="Enviar">
-                            <p class="warnings" id="warnings"></p>
+                            </div>
+                            
+                            <div class="dataForm">
+                                <label for="pass2">Repetir Contraseña:</label>
+                                <input type="password" id="pass2" name="pass2" placeholder="Introduce contraseña..."><br>
+                            </div>
+                            
+                            <div class="dataForm">
+                                <button type="submit" value="" id="Enviar">Registrarse</button>
+                                <p class="warnings" id="warnings"></p>
+                            </div>
+                            
                         </form>
                     </div>
 
@@ -91,21 +101,25 @@
                                 <label for="pass3">Contraseña:</label><br>
                                 <input type="password" id="pass3" name="pass3"
                                     placeholder="Introduce contraseña..."><br>
-                                <input type="submit" value="Enviar">   
+                                <input type="submit" value="Enviar">
                             </div>
                         </form>
 
                     </div>
-                    <div>
+
+                    <div id="boxLogout">
                         <h3>Logout</h3>
                         <div id="logout">
                             <p id="message"></p>
                             <button id="salir">Logout</button>
                         </div>
-
                     </div>
                 </div>
-              
+
+            </div>
+
+            <div id="grafica" style="width: 600px;">
+                <canvas id="myChart"></canvas>
             </div>
 
             <button id="btn_quiz">Comenzar Juego</button>
@@ -114,26 +128,7 @@
         </section>
 
         <section id="boxQuiz">
-
-            <div class="boxFormulario">
-                <h2>Quiz Game 2024</h2>
-                <form id="form_quiz" action="#">
-                    <label for="quiz_category">Select Category: </label>
-                    <select name="quiz_category">
-                        <option value="any">Random Category</option>
-                        <option value="9">General Knowledge</option>
-                        <option value="10">Entertainment: Books</option>
-                        <option value="11">Entertainment: Film</option>
-                    </select>
-
-
-                    <button class="" type="submit">Generar Juego</button>
-                </form>
-            </div>
-
             <div id="categorias"></div>
-
-
             <!-- <div id="boxJuego">
                 <div id="json_datos"></div>
                 <div id="box_cards">
@@ -149,8 +144,8 @@
                     <div id="box_cards">
 
                         <div class="card">
-                            
-                           <h3 class="barra-superior">Entertainment: Film</h3>
+
+                            <h3 class="barra-superior">Entertainment: Film</h3>
                             <!-- <label><strong>Dificultad:</strong> <span class="difficulty">easy</span></label> -->
 
                             <label class="questionTitle">Who played the female lead in the 1933 film "King
@@ -172,10 +167,7 @@
 
         <section id="boxResults">
             <div id="ranking"></div>
-          <div id="grafica" style="width: 600px;">
-                <canvas id="myChart"></canvas>
-              </div>
-            
+
         </section>
     </main>
 

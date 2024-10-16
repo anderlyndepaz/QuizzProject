@@ -65,7 +65,6 @@ function mostrarSeccion(seccion) {
         default:
             console.warn("Sección no válida: " + seccion);
     }
-
 }
 
 /* ************************************* */
@@ -75,9 +74,9 @@ function mostrarSeccion(seccion) {
 // Iniciamos la App
 
 // En el evento onload llamamos a las funciones de inicio
-window.addEventListener('load', function() {
-    // mostramos la seccion "home"
-    mostrarSeccion("quiz");
+window.addEventListener('load', function () {
+	// mostramos la seccion "home"
+	mostrarSeccion("quiz");
 });
 
 /* ************************************* */
@@ -85,7 +84,6 @@ window.addEventListener('load', function() {
 
 // Validación de formulario
 const nombre = getById("nombre");
-const apellido = getById("apellido");
 const email = getById("email");
 const form = getById("form");
 const parrafo = getById("warnings");
@@ -104,12 +102,6 @@ form.addEventListener("submit", e => {
 	// Validar campo "nombre"
 	if (nombre.value.length < 4) {
 		warnings += 'El nombre no es válido.<br>';
-		entrar = true; // Indica que hay errores
-	}
-
-	// Validar campo "apellido"
-	if (apellido.value.length < 5 || apellido.value.length > 30) {
-		warnings += 'El apellido no es válido.<br>';
 		entrar = true; // Indica que hay errores
 	}
 
@@ -296,9 +288,6 @@ function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
 
 	// Guardar el nuevo historial en localStorage
 	localStorage.setItem('quizHistorial', JSON.stringify(historial));
-
-	/* // Ejemplo de uso de la función
-	renderQuizFinalizado(15000, 5, 5, 'Ken'); */
 }
 
 function pintarGrafica() {
@@ -355,3 +344,4 @@ function pintarGrafica() {
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
 pintarGrafica();
+
