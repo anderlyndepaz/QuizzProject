@@ -1,15 +1,110 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyCkRqwzMdrSnXbbatuEZQfFBCJGAfh-2k0",
-    authDomain: "quizz-2024.firebaseapp.com",
-    projectId: "quizz-2024",
-    storageBucket: "quizz-2024.appspot.com",
-    messagingSenderId: "374142806124",
-    appId: "1:374142806124:web:fb045d8b8ea75599d81049"
-  };
+  apiKey: "AIzaSyCkRqwzMdrSnXbbatuEZQfFBCJGAfh-2k0",
+  authDomain: "quizz-2024.firebaseapp.com",
+  projectId: "quizz-2024",
+  storageBucket: "quizz-2024.appspot.com",
+  messagingSenderId: "374142806124",
+  appId: "1:374142806124:web:fb045d8b8ea75599d81049"
+};
 
-  firebase.initializeApp(firebaseConfig);
-  const formdb = firebase.firestore();
-  
+// Inicializar Firebase con la configuración adecuada
+firebase.initializeApp(firebaseConfig);
+
+// Inicializar Firestore
+const formdb = firebase.firestore();
+
+// Registro de usuario
+const signUpUser = (email, password, nombre) => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      let user = userCredential.user;
+      console.log(`Usuario registrado: ${user.email} ID:${user.uid}`);
+      alert(`Usuario registrado: ${user.email}`);
+
+      // Guardar el nombre y el email en Firestore, usando el UID del usuario
+      createUser({
+        id: user.uid,
+        nombre: nombre,
+        email: user.email
+      });
+    })
+    .catch((error) => {
+      console.error("Error en el registro:", error.message);
+    });
+};
+
+// Guardar usuario en Firestore
+const createUser = (user) => {
+  formdb.collection("usuario").doc(user.id).set({
+    nombre: user.nombre,
+    email: user.email
+  })
+  .then(() => {
+    console.log("Usuario guardado en Firestore");
+  })
+  .catch((error) => {
+    console.error("Error al guardar el usuario en Firestore:", error);
+  });
+};
+
+// Formulario de registro
+document.getElementById('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const nombre = document.getElementById('nombre').value;
+  const password = document.getElementById('pass').value;
+
+  signUpUser(email, password, nombre);
+});
+
+// Función de inicio de sesión
+const loginUser = (email, password) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      let user = userCredential.user;
+      console.log(`Usuario ha iniciado sesión: ${user.email} ID:${user.uid}`);
+      alert(`Bienvenido ${user.email}`);
+      
+      // Puedes redirigir al usuario a otra página o mostrar algún mensaje adicional
+    })
+    .catch((error) => {
+      console.error("Error en el inicio de sesión:", error.message);
+      alert("Error en el inicio de sesión: " + error.message);
+    });
+};
+
+// Formulario de login
+document.getElementById('form2').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email2').value;
+  const password = document.getElementById('pass3').value;
+
+  loginUser(email, password);
+});
+
+// Función de logout
+const logoutUser = () => {
+  firebase.auth().signOut().then(() => {
+    console.log("Usuario ha cerrado sesión");
+    alert("Has cerrado sesión correctamente");
+    // Redirigir al usuario a la página de login o página de inicio
+  }).catch((error) => {
+    console.error("Error al cerrar sesión:", error.message);
+    alert("Error al cerrar sesión: " + error.message);
+  });
+};
+
+// Escuchar el clic en el botón de logout
+document.getElementById('logoutBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  logoutUser();
+});
+
+
 // Variable global
 const mApp = {};
 mApp.arr_preguntas = [];
@@ -24,12 +119,12 @@ mApp.fallidas = 0;
 
 // Funcion corta para llamar a 'document.getElementById'
 function getById(obj) {
-	return document.getElementById(obj);
+  return document.getElementById(obj);
 }
 
 // Funcion corta para llamar a 'document.querySelector'
 function qSelector(obj) {
-	return document.querySelector(obj);
+  return document.querySelector(obj);
 }
 
 /* ************************************* */
@@ -37,18 +132,18 @@ function qSelector(obj) {
 
 // Funcion para mostrar u ocultar objetos HTML por ID
 function MO_objID(obj, modo) {
-	let objHTML = getById(obj);
-	if (objHTML) {
-		objHTML.style.display = modo;
-	}
+  let objHTML = getById(obj);
+  if (objHTML) {
+    objHTML.style.display = modo;
+  }
 }
 
 // Funcion para mostrar u ocultar objetos HTML por querySelector
 function MO_objQS(obj, modo) {
-	let objHTML = qSelector(obj);
-	if (objHTML) {
-		objHTML.style.display = modo;
-	}
+  let objHTML = qSelector(obj);
+  if (objHTML) {
+    objHTML.style.display = modo;
+  }
 }
 
 /* ************************************* */
@@ -57,26 +152,26 @@ function MO_objQS(obj, modo) {
 // Funcion para controlar la visibilidad de las tres secciones principales: boxHome, boxQuiz y boxResults
 function mostrarSeccion(seccion) {
 
-    // Ocultamos todas las secciones
-    MO_objID("boxHome", 'none');
-    MO_objID("boxQuiz", 'none');
-    MO_objID("boxResults", 'none');
+  // Ocultamos todas las secciones
+  MO_objID("boxHome", 'none');
+  MO_objID("boxQuiz", 'none');
+  MO_objID("boxResults", 'none');
 
 
-    // Mostramos solo la seccion pasada como argumento
-    switch (seccion) {
-        case "home":
-            MO_objID("boxHome", 'block');
-            break;
-        case "quiz":
-            MO_objID("boxQuiz", 'block');
-            break;
-        case "results":
-            MO_objID("boxResults", 'block');
-            break;
-        default:
-            console.warn("Sección no válida: " + seccion);
-    }
+  // Mostramos solo la seccion pasada como argumento
+  switch (seccion) {
+    case "home":
+      MO_objID("boxHome", 'block');
+      break;
+    case "quiz":
+      MO_objID("boxQuiz", 'block');
+      break;
+    case "results":
+      MO_objID("boxResults", 'block');
+      break;
+    default:
+      console.warn("Sección no válida: " + seccion);
+  }
 }
 
 /* ************************************* */
@@ -87,8 +182,8 @@ function mostrarSeccion(seccion) {
 
 // En el evento onload llamamos a las funciones de inicio
 window.addEventListener('load', function () {
-	// mostramos la seccion "home"
-	mostrarSeccion("quiz");
+  // mostramos la seccion "home"
+  mostrarSeccion("home");
 });
 
 /* ************************************* */
@@ -102,44 +197,44 @@ const parrafo = getById("warnings");
 
 
 form.addEventListener("submit", e => {
-	e.preventDefault(); // Evita que se envíe el formulario automáticamente
+  e.preventDefault(); // Evita que se envíe el formulario automáticamente
 
-	let warnings = "";
-	let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	let entrar = false; // Definición correcta de la variable
+  let warnings = "";
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let entrar = false; // Definición correcta de la variable
 
-	// Limpiar mensajes anteriores
-	parrafo.innerHTML = "";
+  // Limpiar mensajes anteriores
+  parrafo.innerHTML = "";
 
-	// Validar campo "nombre"
-	if (nombre.value.length < 4) {
-		warnings += 'El nombre no es válido.<br>';
-		entrar = true; // Indica que hay errores
-	}
+  // Validar campo "nombre"
+  if (nombre.value.length < 4) {
+    warnings += 'El nombre no es válido.<br>';
+    entrar = true; // Indica que hay errores
+  }
 
-	// Validar formato de correo electrónico
-	if (!regexEmail.test(email.value)) {
-		warnings += 'El correo no es válido.<br>';
-		entrar = true; // Indica que hay errores
-	}
+  // Validar formato de correo electrónico
+  if (!regexEmail.test(email.value)) {
+    warnings += 'El correo no es válido.<br>';
+    entrar = true; // Indica que hay errores
+  }
 
-	// Si hay advertencias, mostrar en el párrafo
-	if (entrar) {
-		parrafo.innerHTML = warnings;
-	} else {
-		parrafo.innerHTML = "Formulario enviado correctamente.";
-		// Aquí puedes proceder con el envío del formulario o ejecutar alguna otra lógica.
-	}
+  // Si hay advertencias, mostrar en el párrafo
+  if (entrar) {
+    parrafo.innerHTML = warnings;
+  } else {
+    parrafo.innerHTML = "Formulario enviado correctamente.";
+    // Aquí puedes proceder con el envío del formulario o ejecutar alguna otra lógica.
+  }
 });
 
 /* ************************************* */
 
 // Datos de los temas
 const temas = [
-	{ nombre: "Cine", imagen: "./assets/img/palomitas.png", value: 11 },
-	{ nombre: "Música", imagen: "./assets/img/micro.png", value: 12 },
-	{ nombre: "Conocimiento General", imagen: "./assets/img/libro.png", value: 9 },
-	{ nombre: "Videojuegos", imagen: "./assets/img/game.png", value: 15 }
+  { nombre: "Cine", imagen: "./assets/img/palomitas.png", value: 11 },
+  { nombre: "Música", imagen: "./assets/img/micro.png", value: 12 },
+  { nombre: "Conocimiento General", imagen: "./assets/img/libro.png", value: 9 },
+  { nombre: "Videojuegos", imagen: "./assets/img/game.png", value: 15 }
 ];
 
 // Crear el contenedor principal
@@ -160,29 +255,29 @@ buttonsContainer.classList.add('buttons');
 
 // Función para manejar la selección de un tema
 function chooseTopic(topic) {
-	alert("Has elegido el tema: " + topic);
-	// Aquí podrías añadir la lógica para redirigir a otra página o cargar contenido específico.
+  alert("Has elegido el tema: " + topic);
+  // Aquí podrías añadir la lógica para redirigir a otra página o cargar contenido específico.
 }
 
 // Crear cada botón basado en los datos de los temas
 temas.forEach(tema => {
-	const button = document.createElement('div');
-	button.classList.add('button');
-	button.onclick = () => chooseTopic(tema.value);
+  const button = document.createElement('div');
+  button.classList.add('button');
+  button.onclick = () => chooseTopic(tema.value);
 
-	const img = document.createElement('img');
-	img.src = tema.imagen;
-	img.alt = tema.nombre;
+  const img = document.createElement('img');
+  img.src = tema.imagen;
+  img.alt = tema.nombre;
 
-	// Agregar el contenedor de botones al contenedor principal
-	container.appendChild(buttonsContainer);
+  // Agregar el contenedor de botones al contenedor principal
+  container.appendChild(buttonsContainer);
 
-	const text = document.createElement('p');
-	text.textContent = tema.nombre;
+  const text = document.createElement('p');
+  text.textContent = tema.nombre;
 
-	button.appendChild(img);
-	button.appendChild(text);
-	buttonsContainer.appendChild(button);
+  button.appendChild(img);
+  button.appendChild(text);
+  buttonsContainer.appendChild(button);
 })
 
 // Agregar todo al DOM
@@ -192,167 +287,166 @@ categorias.appendChild(container);
 
 // Función para renderizar el HTML en el DOM dentro de la sección #boxResults
 function renderQuizFinalizado(puntos, aciertos, fallos, nombre) {
-	// Obtener la sección donde se insertará el contenido
-	const ranking = getById('ranking');
-	if (!ranking) {
-		console.error('No se encontró el elemento con id "ranking"');
-		return;
-	}
+  // Obtener la sección donde se insertará el contenido
+  const ranking = getById('ranking');
+  if (!ranking) {
+    console.error('No se encontró el elemento con id "ranking"');
+    return;
+  }
 
-	// Limpiar el contenido anterior (opcional)
-	ranking.innerHTML = '';
+  // Limpiar el contenido anterior (opcional)
+  ranking.innerHTML = '';
 
-	// Crear el contenedor principal
-	const container = document.createElement('div');
-	container.className = 'container';
+  // Crear el contenedor principal
+  const container = document.createElement('div');
+  container.className = 'container';
 
-	// Título
-	const title = document.createElement('h1');
-	title.textContent = 'Quiz Finalizado';
-	container.appendChild(title);
+  // Título
+  const title = document.createElement('h1');
+  title.textContent = 'Quiz Finalizado';
+  container.appendChild(title);
 
-	// Logo Quiz
-	const questionBox = document.createElement('div');
-	questionBox.className = 'question-box';
-	const img = document.createElement('img');
-	img.src = './assets/img/cuboQuiz.png';
-	img.alt = 'logo Quiz';
-	questionBox.appendChild(img);
-	container.appendChild(questionBox);
+  // Logo Quiz
+  const questionBox = document.createElement('div');
+  questionBox.className = 'question-box';
+  const img = document.createElement('img');
+  img.src = './assets/img/cuboQuiz.png';
+  img.alt = 'logo Quiz';
+  questionBox.appendChild(img);
+  container.appendChild(questionBox);
 
-	// Tabla de posiciones
-	const leaderboard = document.createElement('div');
-	leaderboard.className = 'leaderboard';
+  // Tabla de posiciones
+  const leaderboard = document.createElement('div');
+  leaderboard.className = 'leaderboard';
 
-	// Crear ítems de la tabla de posiciones
-	const rankingItem1 = createRankingItem('#FFD700', 'Primer Lugar', puntos, nombre);
-	const rankingItem2 = createRankingItem('#FF69B4', 'Segundo Lugar', puntos, nombre);
-	const rankingItem3 = createRankingItem('#FFD700', 'Tercer Lugar', puntos, nombre);
-	leaderboard.appendChild(rankingItem1);
-	leaderboard.appendChild(rankingItem2);
-	leaderboard.appendChild(rankingItem3);
+  // Crear ítems de la tabla de posiciones
+  const rankingItem1 = createRankingItem('#FFD700', 'Primer Lugar', puntos, nombre);
+  const rankingItem2 = createRankingItem('#FF69B4', 'Segundo Lugar', puntos, nombre);
+  const rankingItem3 = createRankingItem('#FFD700', 'Tercer Lugar', puntos, nombre);
+  leaderboard.appendChild(rankingItem1);
+  leaderboard.appendChild(rankingItem2);
+  leaderboard.appendChild(rankingItem3);
 
-	container.appendChild(leaderboard);
+  container.appendChild(leaderboard);
 
-	// Puntuación total
-	const scoreTitle = document.createElement('h2');
-	scoreTitle.textContent = `${puntos} Puntos`;
-	container.appendChild(scoreTitle);
+  // Puntuación total
+  const scoreTitle = document.createElement('h2');
+  scoreTitle.textContent = `${puntos} Puntos`;
+  container.appendChild(scoreTitle);
 
-	// Resumen de aciertos y fallos
-	const summary = document.createElement('p');
-	summary.innerHTML = `ACIERTOS: ${aciertos}<br>FALLOS: ${fallos}`;
-	container.appendChild(summary);
+  // Resumen de aciertos y fallos
+  const summary = document.createElement('p');
+  summary.innerHTML = `ACIERTOS: ${aciertos}<br>FALLOS: ${fallos}`;
+  container.appendChild(summary);
 
-	// Botón de volver a jugar
-	const button = document.createElement('button');
-	button.id = 'comenzarBtn';
-	button.textContent = 'volver a jugar';
-	button.addEventListener('click', () => {
-		// Acción para volver a jugar
-		window.location.reload();
-	});
-	container.appendChild(button);
+  // Botón de volver a jugar
+  const button = document.createElement('button');
+  button.id = 'comenzarBtn';
+  button.textContent = 'volver a jugar';
+  button.addEventListener('click', () => {
+    // Acción para volver a jugar
+    window.location.reload();
+  });
+  container.appendChild(button);
 
-	// Agregar el contenedor a la sección #boxResults
-	ranking.appendChild(container);
+  // Agregar el contenedor a la sección #boxResults
+  ranking.appendChild(container);
 
-	// Guardar los datos en localStorage
-	guardarEnLocalStorage(puntos, aciertos, fallos, nombre);
+  // Guardar los datos en localStorage
+  guardarEnLocalStorage(puntos, aciertos, fallos, nombre);
 }
 
 // Función para crear un ítem de la tabla de posiciones
 function createRankingItem(color, lugar, puntos, nombre) {
-	const rankingItem = document.createElement('div');
-	rankingItem.className = 'ranking-item';
-	rankingItem.style.backgroundColor = color;
+  const rankingItem = document.createElement('div');
+  rankingItem.className = 'ranking-item';
+  rankingItem.style.backgroundColor = color;
 
-	const img = document.createElement('img');
-	img.src = './assets/img/cuboQuiz.png';
-	img.alt = lugar;
-	img.className = 'ranking-icon';
-	rankingItem.appendChild(img);
+  const img = document.createElement('img');
+  img.src = './assets/img/cuboQuiz.png';
+  img.alt = lugar;
+  img.className = 'ranking-icon';
+  rankingItem.appendChild(img);
 
-	const puntosSpan = document.createElement('span');
-	puntosSpan.textContent = `${puntos} Puntos`;
-	rankingItem.appendChild(puntosSpan);
+  const puntosSpan = document.createElement('span');
+  puntosSpan.textContent = `${puntos} Puntos`;
+  rankingItem.appendChild(puntosSpan);
 
-	const nombreSpan = document.createElement('span');
-	nombreSpan.textContent = nombre;
-	rankingItem.appendChild(nombreSpan);
+  const nombreSpan = document.createElement('span');
+  nombreSpan.textContent = nombre;
+  rankingItem.appendChild(nombreSpan);
 
-	return rankingItem;
+  return rankingItem;
 }
 
 // Función para guardar en localStorage
 function guardarEnLocalStorage(puntos, aciertos, fallos, nombre) {
-	const quizData = {
-		puntos: puntos,
-		aciertos: aciertos,
-		fallos: fallos,
-		nombre: nombre,
-		fecha: new Date().toLocaleString()
-	};
+  const quizData = {
+    puntos: puntos,
+    aciertos: aciertos,
+    fallos: fallos,
+    nombre: nombre,
+    fecha: new Date().toLocaleString()
+  };
 
-	// Obtener los datos existentes en localStorage o crear uno nuevo
-	const historial = JSON.parse(localStorage.getItem('quizHistorial')) || [];
-	historial.push(quizData);
+  // Obtener los datos existentes en localStorage o crear uno nuevo
+  const historial = JSON.parse(localStorage.getItem('quizHistorial')) || [];
+  historial.push(quizData);
 
-	// Guardar el nuevo historial en localStorage
-	localStorage.setItem('quizHistorial', JSON.stringify(historial));
+  // Guardar el nuevo historial en localStorage
+  localStorage.setItem('quizHistorial', JSON.stringify(historial));
 }
 
-pintarGrafica();  
 function pintarGrafica() {
-	const ctx = document.getElementById('myChart'); // Accede al canvas con ID "myChart"
+  const ctx = document.getElementById('myChart'); // Accede al canvas con ID "myChart"
 
-	// Verifica si el elemento canvas existe
-	if (ctx) {
-		new Chart(ctx, {
-			type: 'bar', // Tipo de gráfico: barra
-			data: {
-				// Etiquetas en formato de fecha
-				labels: [
-					'2024-10-01',
-					'2024-10-02',
-					'2024-10-03',
-					'2024-10-04',
-					'2024-10-05',
-					'2024-10-06'
-				],
-				datasets: [{
-					label: 'RANKING',
-					data: [12, 19, 3, 5, 2, 3], // Datos de puntuación
-					borderWidth: 5,
-					borderColor: '#ff69b4', // Color del borde de las barras (rosa fuerte)
-					backgroundColor: '#ff69b4', // Color de las barras (rosa fuerte)
-				}]
-			},
-			options: {
-				scales: {
-					x: {
-						type: 'time', // Tipo de eje X: tiempo
-						time: {
-							unit: 'day' // Unidad de tiempo
-						},
-						title: {
-							display: true,
-							text: 'FECHA' // Título del eje X
-						}
-					},
-					y: {
-						beginAtZero: true, // Comenzar el eje Y desde 0
-						title: {
-							display: true,
-							text: 'PUNTUACION' // Título del eje Y
-						}
-					}
-				}
-			}
-		});
-	} else {
-		alert("Canvas not found");
-	}
+  // Verifica si el elemento canvas existe
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: {
+        // Etiquetas en formato de fecha
+        labels: [
+          '2024-10-01',
+          '2024-10-02',
+          '2024-10-03',
+          '2024-10-04',
+          '2024-10-05',
+          '2024-10-06'
+        ],
+        datasets: [{
+          label: 'RANKING',
+          data: [12, 19, 3, 5, 2, 3], // Datos de puntuación
+          borderWidth: 5,
+          borderColor: '#ff69b4', // Color del borde de las barras (rosa fuerte)
+          backgroundColor: '#ff69b4', // Color de las barras (rosa fuerte)
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time', // Tipo de eje X: tiempo
+            time: {
+              unit: 'day' // Unidad de tiempo
+            },
+            title: {
+              display: true,
+              text: 'FECHA' // Título del eje X
+            }
+          },
+          y: {
+            beginAtZero: true, // Comenzar el eje Y desde 0
+            title: {
+              display: true,
+              text: 'PUNTUACION' // Título del eje Y
+            }
+          }
+        }
+      }
+    });
+  } else {
+    alert("Canvas not found");
+  }
 }
 // Ejemplo de uso de la función
 renderQuizFinalizado(15000, 5, 5, 'Ken');
