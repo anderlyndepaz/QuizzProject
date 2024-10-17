@@ -462,7 +462,7 @@ button:hover {
 
 #grafica {
     background-color: #ffd700;
-    display: none;
+    display: flex;
     /* poner a flex para mostrarlo */
     align-items: center;
     justify-content: space-around;
