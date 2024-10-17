@@ -203,7 +203,6 @@ input {
     margin: 0 auto;
     margin-top: 10px;
     padding: 50px; /* Cambié de 100px a 20px para mejor espaciado */
-    text-align: center;
 }
 
 
@@ -406,3 +405,35 @@ button:hover {
     height: 230px;
 }
 
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 100%; /* Garantiza que el input se expanda */
+    text-align: left;
+}
+
+button {
+    text-align: center;
+    width: 100%;
+}
+
+#Envio {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Envio:hover {
+    background-color: #ffbb00;
+}
+
+#Enviar {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Enviar:hover {
+    background-color: #ffbb00;
+}
