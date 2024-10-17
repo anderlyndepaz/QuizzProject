@@ -29,7 +29,8 @@ body {
 /* Contenedor principal */
 .container {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
+    width: 100%;
 }
 
 #boxJuego {
@@ -165,7 +166,7 @@ button {
 #form {
     background-color: #FF69B4;
     color: #fff;
-    padding: 15px 30px;
+    padding: 15px 40px;
     border: 1px solid black;
     border-radius: 25px;
     cursor: pointer;
@@ -176,7 +177,7 @@ button {
 #form2 {
     background-color: #FF69B4;
     color: #fff;
-    padding: 15px 30px;
+    padding: 15px 40px;
     border: 1px solid black;
     border-radius: 25px;
     cursor: pointer;
@@ -196,10 +197,12 @@ input {
 }
 
 #formulario {
-    width: 100%;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se coloquen uno debajo del otro */
     max-width: 300px;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 10px;
+    padding: 50px; /* Cambié de 100px a 20px para mejor espaciado */
 }
 
 
@@ -402,14 +405,35 @@ button:hover {
     height: 230px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    /* Opcional: para quitar el espacio de relleno por defecto */
-    margin: 0;
-    /* Opcional: para ajustar el margen */
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 100%; /* Garantiza que el input se expanda */
+    text-align: left;
 }
 
-#boxLogout {
-    display: none;
+button {
+    text-align: center;
+    width: 100%;
+}
+
+#Envio {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Envio:hover {
+    background-color: #ffbb00;
+}
+
+#Enviar {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Enviar:hover {
+    background-color: #ffbb00;
 }
