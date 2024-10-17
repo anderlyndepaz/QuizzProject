@@ -62,45 +62,29 @@
 
                 <div class="container">
                     <div>
-                        <h2 class="Formulario">Formulario de Registro</h2>
+                        <h2 class="Formulario">Registro</h2>
                         <form class="formulario-registro" id="form">
-                            <div class="dataForm">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre" placeholder="Introduce nombre...">
-                            </div>
+        
+                                
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                                <input type="email" id="email" name="email" placeholder="Email">
+                                <input type="password" id="pass" name="pass" placeholder="Contraseña"><br>
+                                <input type="password" id="pass2" name="pass2" placeholder="Contraseña"><br>
                             
                             <div class="dataForm">
-                                <label for="email">Correo Electrónico:</label>
-                                <input type="email" id="email" name="email" placeholder="Introduce email...">
-                            </div>
-                            
-                            <div class="dataForm">
-                                <label for="pass2">Contraseña:</li>
-                                <input type="password" id="pass" name="pass" placeholder="Introduce contraseña..."><br>
-                            </div>
-                            
-                            <div class="dataForm">
-                                <label for="pass2">Repetir Contraseña:</label>
-                                <input type="password" id="pass2" name="pass2" placeholder="Introduce contraseña..."><br>
-                            </div>
-                            
-                            <div class="dataForm">
-                                <button type="submit" value="" id="Enviar">Registrarse</button>
+                                <button type="submit" value="" id="Envio">Registrarse</button>
                                 <p class="warnings" id="warnings"></p>
                             </div>
                         </form>
                     </div>
 
                     <div>
-                        <h3>Formulario de Inicio</h3>
+                        <h2>Inicio sesión</h2>
                         <form id="form2" action="#" method="POST">
                             <div>
-                                <label for="email2">Email:</label><br>
-                                <input type="email" id="email2" name="email2" placeholder="Introduce email..."><br>
-                                <label for="pass3">Contraseña:</label><br>
-                                <input type="password" id="pass3" name="pass3"
-                                    placeholder="Introduce contraseña..."><br>
-                                <input type="submit" value="Enviar">
+                                <input type="email" id="email2" name="email2" placeholder="Email"><br>
+                                <input type="password" id="pass3" name="pass3" placeholder="Contraseña"><br>
+                                <button type="submit" value="Enviar" id="Enviar">Enviar</button>
                             </div>
                         </form>
 
@@ -110,7 +94,7 @@
                         <h3>Logout</h3>
                         <div id="logout">
                             <p id="message"></p>
-                            <button id="salir">Logout</button>
+                            <button id="logoutBtn">Logout</button>
                         </div>
                     </div>
                 </div>
@@ -137,6 +121,32 @@
                     <div id="hidden_answer"></div>
                 </div>
             </div>
+            <div id="boxJuego">
+                <div id="json_datos">
+                    <div id="box_cards">
+
+                        <div class="card">
+
+                            <h3 class="titlebarra-superior">Entertainment: Film</h3>
+                            <div class="barra-superior">
+                                <img src="assets/img/cuboQuiz.png" alt="CuboQuizz">
+                            </div>
+                            <!-- <label><strong>Dificultad:</strong> <span class="difficulty">easy</span></label> -->
+
+                            <label class="questionTitle">Who played the female lead in the 1933 film "King
+                                Kong"?</label>
+                            <div class="containerQuestions">
+                                <div class="question neutral naranja" onclick="responderQuiz(event, 0);">Fay Wray</div>
+                                <div class="question neutral azul" onclick="responderQuiz(event, 0);">Jean Harlow</div>
+                                <div class="question neutral rosa" onclick="responderQuiz(event, 0);">Vivien Leigh</div>
+                                <div class="question neutral amarillo" onclick="responderQuiz(event, 0);">Mae West</div>
+                            </div>
+                        </div><button id="btn_nextQuestion">Siguiente</button>
+                        <!-- <button id="btn_mostrarResultados">Mostrar Resultados</button> -->
+                        <div id="hidden_answer"></div>
+                    </div>
+                </div>
+            </div>
             <div id="mensajesError"></div>
         </section>
 
@@ -146,6 +156,14 @@
         </section>
     </main>
 
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
 
     <!-- Scripts de JavaScript -->
     <script src="js/script.js"></script>

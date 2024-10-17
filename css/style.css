@@ -1,4 +1,5 @@
 /* Estilo general */
+
 body {
     margin: 0;
     padding: 0;
@@ -15,21 +16,37 @@ body {
     background-position: center;
 }
 
-.barra-superior {
+.titlebarra-superior {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    text-align: center;
     background-color: #f56c9d;
-    /* Color rosa */
     padding: 10px;
     border-radius: 20px;
     margin: 20px;
+    justify-content: center
+}
+
+.barra-superior img {
+    width: 100px;
+    height: auto;
+}
+
+.barra-superior {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+
 }
 
 /* Contenedor principal */
 .container {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
+    width: 100%;
 }
 
 #boxJuego {
@@ -166,7 +183,7 @@ button {
 #form {
     background-color: #FF69B4;
     color: #fff;
-    padding: 15px 30px;
+    padding: 15px 40px;
     border: 1px solid black;
     border-radius: 25px;
     cursor: pointer;
@@ -177,7 +194,7 @@ button {
 #form2 {
     background-color: #FF69B4;
     color: #fff;
-    padding: 15px 30px;
+    padding: 15px 40px;
     border: 1px solid black;
     border-radius: 25px;
     cursor: pointer;
@@ -197,10 +214,12 @@ input {
 }
 
 #formulario {
-    width: 100%;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se coloquen uno debajo del otro */
     max-width: 300px;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 10px;
+    padding: 50px; /* Cambié de 100px a 20px para mejor espaciado */
 }
 
 
@@ -213,25 +232,23 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    font-size: 40px;
-    color: black;
-
-}
-
-.containerQuestions {
-    display: flex;
-    width: 350px;
-    margin: auto;
-    padding: 50px 50px 50px 50px;
-    flex-wrap: wrap;
+    font-size: 20px;
+    color: white;
     justify-content: center;
 
 }
 
 .containerQuestions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    width: 45px;
+    margin: auto;
+    padding: 50px 50px 50px 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 .question {
@@ -240,10 +257,19 @@ button:hover {
     border-radius: 5px;
 }
 
+.question.disabled {
+    cursor: default;
+    color: #999999;
+    border: 16px solid rgb(176, 179, 180);
+    background-color: rgb(218, 218, 218);
+}
+
 .question.neutral {
-    font-size: 1.3em;
+    font-size: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    min-height: 80px;
+    max-height: 80px;
     cursor: pointer;
     border: 16px solid rgb(247, 141, 12);
     background-color: rgb(254, 254, 255);
@@ -252,6 +278,17 @@ button:hover {
     padding: 50px 50px 50px 50px;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+.question.neutral.naranja {
+    border: 16px solid rgb(247, 141, 12);
+
+}
+
+.question.neutral.naranja:hover {
+    border: 16px solid rgb(255, 223, 184);
+
 }
 
 .question.neutral.naranja {
@@ -268,18 +305,27 @@ button:hover {
     border: 16px solid rgb(166, 216, 254);
 }
 
+.question.neutral.azul:hover {
+    border: 16px solid rgb(192, 195, 253);
+
+}
+
 .question.neutral.rosa {
     border: 16px solid rgb(255, 84, 249);
 }
+
 .question.neutral.rosa:hover {
-    border: 16px solid rgb(255, 170, 252);
+    border: 16px solid rgb(255, 211, 254);
+
 }
 
 .question.neutral.amarillo {
-    border: 16px solid rgb(255, 244, 84);
+    border: 16px solid rgb(240, 244, 25);
+
 }
+
 .question.neutral.amarillo:hover {
-    border: 16px solid rgb(255, 254, 167);
+    border: 16px solid rgb(252, 253, 196);
 }
 
 .question.correcta {
@@ -336,10 +382,12 @@ button:hover {
 }
 
 .card h3 {
+    color: white;
+    display: flex;
     background-color: #FF69B4;
     border-radius: 20px;
     margin-bottom: 10px;
-    font-size: 40px;
+    font-size: 16px;
     margin: 0;
     text-align: center;
 }
@@ -360,12 +408,12 @@ button:hover {
     color: white;
     padding: 15px 40px;
     border-radius: 30px;
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 #btn_nextQuestion:hover {
@@ -422,16 +470,38 @@ button:hover {
     max-width: 400px;
     margin: 0 auto;
     height: 230px;
+
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    /* Opcional: para quitar el espacio de relleno por defecto */
-    margin: 0;
-    /* Opcional: para ajustar el margen */
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 100%; /* Garantiza que el input se expanda */
+    text-align: left;
 }
 
-#boxLogout {
-    display: none;
+button {
+    text-align: center;
+    width: 100%;
+}
+
+#Envio {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Envio:hover {
+    background-color: #ffbb00;
+}
+
+#Enviar {
+    background-color: #ffd700;
+    color: #000;
+}
+
+#Enviar:hover {
+    background-color: #ffbb00;
 }
