@@ -136,7 +136,8 @@ label {
 }
 
 .leaderboard {
-    margin: 20px 0;
+    width: 90%;
+    margin: 15px 0;
 }
 
 .ranking-item {
@@ -290,9 +291,18 @@ button:hover {
 
 }
 
+.question.neutral.naranja {
+    border: 16px solid rgb(255, 195, 84);
+}
+.question.neutral.naranja:hover {
+    border: 16px solid rgb(254, 205, 126);
+}
+
 .question.neutral.azul {
     border: 16px solid rgb(84, 92, 255);
-
+}
+.question.neutral.azul:hover {
+    border: 16px solid rgb(166, 216, 254);
 }
 
 .question.neutral.azul:hover {
@@ -302,7 +312,6 @@ button:hover {
 
 .question.neutral.rosa {
     border: 16px solid rgb(255, 84, 249);
-
 }
 
 .question.neutral.rosa:hover {
@@ -321,17 +330,37 @@ button:hover {
 
 .question.correcta {
     cursor: default;
-    border: 1px solid rgb(37, 185, 18);
-    background-color: rgb(195, 224, 195);
+    border: 16px solid rgb(37, 185, 18);
+    background-color: rgb(174, 253, 174);
 }
 
 .question.incorrecta {
     cursor: default;
-    border: 1px solid rgb(185, 62, 18);
-    background-color: rgb(224, 206, 195);
+    border: 16px solid rgb(235, 65, 14);
+    background-color: rgb(255, 166, 111);
+}
+
+.question.disabled {
+    cursor: default;
+    color: #999999;
+    border: 16px solid rgb(176, 179, 180);
+    background-color: rgb(219, 212, 212);
+}
+
+.ranking-item label{
+    font-weight: normal;
+    display:block;
 }
 
 #hidden_answer {
+    display: none;
+}
+
+#btn_nextQuestion{
+    display: none;
+}
+
+#btn_mostrarResultados{
     display: none;
 }
 
