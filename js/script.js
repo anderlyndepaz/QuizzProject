@@ -112,9 +112,7 @@ mApp.preguntaActual = 0;
 mApp.acertadas = 0;
 mApp.fallidas = 0;
 
-/* ************************************* */
-/* ************************************* */
-/* ************************************* */
+
 // Funciones de manejo del DOM
 
 // Funcion corta para llamar a 'document.getElementById'
