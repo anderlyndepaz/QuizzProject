@@ -1,11 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZZ GAME</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" tamaños="57x57" href="./assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" tamaños="60x60" href="./assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" tamaños="72x72" href="./assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" tamaños="76x76" href="./assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" tamaños="114x114" href="./assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" tamaños="120x120" href="./assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" tamaños="144x144" href="./assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" tamaños="152x152" href="./assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" tamaños="180x180" href="./assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" tipo="image/png" tamaños="192x192" href="./assets/favicon/android-icon-192x192.png">
+    <link rel="icon" tipo="image/png" tamaños="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icono" tipo="imagen/png" tamaños="96x96" href="./assets/favicon/favicon-96x96.png">
+    <link rel="icono" tipo="imagen/png" tamaños="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifiesto" href="./assets/favicon/manifiesto.json">
+    <meta nombre="msapplication-TileColor" contenido="#ffffff">
+    <meta nombre="msapplication-TileImage" contenido="./assets/favicon/ms-icon-144x144.png">
+    <meta nombre="theme-color" contenido="#ffffff">
+    <title>Quiz Game</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Metadatos importantes -->
+    <meta name="description"
+        content="Quiz 2024 es un emocionante juego de preguntas con 4 posibles respuestas y 3 niveles de dificultad. Pon a prueba tus conocimientos en temas como música, arte, películas, ciencia, historia y literatura.">
+    <meta name="keywords"
+        content="quiz, juego de preguntas, trivia, niveles de dificultad, música, arte, películas, ciencia, historia, literatura, conocimiento">
+    <meta name="author" content="Quiz1410">
+
+    <!-- Enlaces a archivos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- libreria de grafica -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
 </head>
+
 <body>
-    
+    <!-- Encabezado -->
+    <header>
+        <!-- <nav>
+            <ul>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+                <li><a href="#">texto</a></li>
+            </ul>
+        </nav> -->
+    </header>
+
+    <!-- Sección principal -->
+    <main>
+        <section id="boxHome">
+            <div id="formulario">
+
+                <div class="container">
+                    <div>
+                        <h2 class="Formulario">Registro</h2>
+                        <form class="formulario-registro" id="form">
+        
+                                
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                                <input type="email" id="email" name="email" placeholder="Email">
+                                <input type="password" id="pass" name="pass" placeholder="Contraseña"><br>
+                                <input type="password" id="pass2" name="pass2" placeholder="Contraseña"><br>
+                            
+                            <div class="dataForm">
+                                <button type="submit" value="" id="Envio">Registrarse</button>
+                                <p class="warnings" id="warnings"></p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <h2>Inicio sesión</h2>
+                        <form id="form2" action="#" method="POST">
+                            <div>
+                                <input type="email" id="email2" name="email2" placeholder="Email"><br>
+                                <input type="password" id="pass3" name="pass3" placeholder="Contraseña"><br>
+                                <button type="submit" value="Enviar" id="Enviar">Enviar</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div id="boxLogout">
+                        <h3>Logout</h3>
+                        <div id="logout">
+                            <p id="message"></p>
+                            <button id="logoutBtn">Logout</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="grafica" style="width: 600px;">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <button id="btn_quiz">Comenzar Juego</button>
+
+            <div id="mensaje"></div>
+        </section>
+
+        <section id="boxQuiz">
+            <div id="categorias"></div>
+            <div id="boxJuego">
+                <div id="json_datos"></div>
+                <div id="box_cards">
+                    <div class="card"></div>
+                    <button id="btn_nextQuestion"></button>
+                    <button id="btn_mostrarResultados">Mostrar Resultados</button>
+                    <div id="hidden_answer"></div>
+                </div>
+            </div>
+            <div id="mensajesError"></div>
+        </section>
+
+        <section id="boxResults">
+            <div id="ranking"></div>
+            <div id="resultados"></div>
+        </section>
+    </main>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+    <!-- Scripts de JavaScript -->
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
